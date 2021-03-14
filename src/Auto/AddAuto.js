@@ -57,13 +57,13 @@ constructor(props){
       <div>
         <h1>Добавить модель авто </h1>
         <form onSubmit={this.onSubmit}>
+        <p>Заполните все поля :</p>
         <select>
         {brendsList.map((item, index) =>
           <Option brend = {item} key = {index} change = {this.onChange} />
         )
         }
         </select>
-        <p>Заполните все поля :</p>
           {data.map( (item, index) => {
           return (<div>
           <Input elem = {item} key = {index} change = {this.onChange} />
