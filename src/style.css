@@ -1,3 +1,7 @@
+body{
+  margin: 0;
+  text-align: center;
+}
 h1, p {
   text-align: center;
   color: rgb(58, 58, 146);
@@ -11,8 +15,32 @@ li{
 a{
   text-decoration: none;
   color: rgb(82, 75, 75);
-  font-size: 25px;
+  font-size: 20px;
+}
+.listBrends{
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  color: rgb(82, 75, 75);
+  font-size: 15px;
 }
 .button{
   background-color: rgb(149, 149, 214);
+}
+.modelsStyle li {
+  display: block;
+  font-size: 25px;
+}
+.modelsStyle a{
+  text-decoration: underline blue;
+  margin-left: 25px;
+  font-size: 15px;
+}
+ol{
+  text-align: left;
+  list-style-type: decimal;
+}
+.modelsStyle span{
+  font-size: 20px;
+  margin-right: 10px;
 }
