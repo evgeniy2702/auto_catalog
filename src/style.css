@@ -1,8 +1,18 @@
 h1, p {
-  font-family: Lato;
+  text-align: center;
+  color: rgb(58, 58, 146);
 }
 
 li{
   display: inline;
   margin-left: 10px;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(82, 75, 75);
+  font-size: 25px;
+}
+.button{
+  background-color: rgb(149, 149, 214);
 }

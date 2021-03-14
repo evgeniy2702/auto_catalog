@@ -31,22 +31,25 @@ class Header extends React.Component {
       <header>
         <ul >
           <li>
-            <button><Link to="/all_auto">Просмотреть авто</Link></button>
+            <button className = "button"><Link to="/all_auto">Просмотреть авто</Link></button>
           </li>
           <li>
-            <Link to="/add_auto">Добавить авто</Link>
+            <button className = "button"><Link to="/add_auto">Добавить авто</Link></button>
           </li>
           <li>
-            <Link to="/update_auto">Редактировать авто</Link>
+            <button className = "button"><Link to="/update_auto">Редактировать авто</Link></button>
           </li>
           <li>
-            <Link to="/delete_auto">Удалить авто</Link>
+            <button className = "button"><Link to="/delete_auto">Удалить авто</Link></button>
           </li>
           <li>
-            <Link to="/search_auto">Найти авто</Link>
+            <button className = "button"><Link to="/search_auto">Найти авто</Link></button>
+          </li>
+          <li>
+          <button className = "button"><Link to="/">На стартовую страницу</Link></button>
           </li>
         </ul>
-        <Link to="/">На стартовую страницу</Link>
+          
       </header>
     );
   }
