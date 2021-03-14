@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./../style.css";
-import { NavLink } from "react-router-dom";
+import { BrowserRouter as Router, NavLink, Link, Redirect } from "react-router-dom";
 
 import Brends from "../Const/Brends";
 
@@ -12,7 +12,8 @@ class Models extends Component {
       label:"",
       nameBrend:"",
       style:{},
-      models:[]
+      linkBySite:"",
+      models:{}
       };
     for(let i=0; i< Brends.length; i++){
       if(Brends[i].nameBrend === brend){
@@ -36,6 +37,11 @@ class Models extends Component {
             </li>
           ))}
         </ol>
+        <NavLink to="/all_auto" >На предыдущую страницу </NavLink>
+        <Router>
+        <Link to = {dataBrend.linkBySite}>Перейти на официальный сайт бренда </Link>
+        <Redirect path={dataBrend.linkBySite} />
+        </Router>
       </div>
     );
   }

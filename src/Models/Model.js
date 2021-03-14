@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./../style.css";
+import {NavLink} from "react-router-dom";
 
 import Brends from "../Const/Brends";
 
@@ -11,25 +12,29 @@ class Model extends Component{
 
   for(let i=0; i< Brends.length; i++){
     if(Brends[i].nameBrend == brend){
-      for(let i = 0; j< Brends.models.models.length; j++){
-        if(Brends.models.models[j].id === id){
-          item = Brends.models.models[j];
-          break;
-        }
+      item = Brends[i].models;
       }
     }
-  }
+  let model = {id:0,model:"", color:"", year: 0, vEng: 0, price: 0, desc: ""};
+
+  for(let j = 0; j< item.models.length; j++){
+        if(id == item.models[j].id){
+          model = item.models[j];
+          break;
+        }
+  }      
   if(item === undefined){
       return <h1>Модели с таким {id} не существует</h1>;
     }
     else{
-      return <div>
-        <p>Название модели : <i>{item.model}</i></p>
-        <p>Цвет модели : <i>{item.color}</i></p>
-        <p>Год выпуска : <img src = {item.year} /></p>
-        <p>Объем двигателяб м.куб : <i>{item.vEng}</i></p>
-        <p>Цена, грн : <i>{item.price}</i></p>
-        <p>Технические характеристики : <i>{item.desc}</i></p>
+      return <div className="model">
+        <p>Название модели : <i>{model.model}</i></p>
+        <p>Цвет модели : <i>{model.color}</i></p>
+        <p>Год выпуска : <i> {model.year} </i></p>
+        <p>Объем двигателяб м.куб : <i>{model.vEng}</i></p>
+        <p>Цена, грн : <i>{model.price}</i></p>
+        <p>Технические характеристики : <i>{model.desc}</i></p>
+        <NavLink to={`/all_auto/${brend}`}>На предыдущую страницу </NavLink>
         </div>
     }  
   }

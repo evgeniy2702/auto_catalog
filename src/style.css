@@ -44,3 +44,9 @@ ol{
   font-size: 20px;
   margin-right: 10px;
 }
+.model a{
+  text-decoration: underline blue;
+  margin-left: 25px;
+  font-size: 15px;
+  color: rgb(9, 9, 70)
+}

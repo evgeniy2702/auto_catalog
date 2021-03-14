@@ -5,6 +5,7 @@ import "./../style.css";
 import Models from "./../Models/Models";
 import Model from "./../Models/Model";
 import Brends  from "./../Const/Brends";
+import AutoListByBrend from "./../AutoList/AutoListByBrend";
 
 
 export default class Item extends Component{
