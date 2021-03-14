@@ -75,9 +75,16 @@ label{
   margin-right: 10px;
   text-align: left;
 }
-input{
+input, select{
   border: 1px solid rgb(114, 108, 108);
   width: 200px;
   border-radius: 5px;
   background-color: rgb(241, 233, 233);
+}
+.divSelect span{
+  display: inline;
+  margin-right: 20px;
+}
+.divSelect select{
+  color:  rgb(114, 108, 108);;
 }

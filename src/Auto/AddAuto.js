@@ -58,7 +58,8 @@ constructor(props){
         <h1>Добавить модель авто </h1>
         <form onSubmit={this.onSubmit}>
         <p>Заполните все поля :</p>
-        <div>Выберите название бренда :
+        <div className = "divSelect">
+        <span>Выберите название бренда :</span>
         <select>
         {brendsList.map((item, index) =>
           <Option brend = {item} key = {index} change = {this.onChange} />
@@ -66,6 +67,7 @@ constructor(props){
         }
         </select>
         </div>
+        <br/>
           {data.map( (item, index) => {
           return (<div>
           <Input elem = {item} key = {index} change = {this.onChange} />
