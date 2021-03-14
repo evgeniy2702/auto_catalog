@@ -1,6 +1,8 @@
-body{
+body, html,div{
   margin: 0;
   text-align: center;
+  width: 100%;
+  height: 100%;
 }
 h1, p {
   text-align: center;
@@ -49,4 +51,8 @@ ol{
   margin-left: 25px;
   font-size: 15px;
   color: rgb(9, 9, 70)
+}
+.model{
+width: 100%;
+height: calc(100% - 200px);
 }

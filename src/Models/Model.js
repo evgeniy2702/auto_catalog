@@ -27,13 +27,15 @@ class Model extends Component{
       return <h1>Модели с таким {id} не существует</h1>;
     }
     else{
-      return <div className="model">
+      return <div className="model" style = {{
+backgroundImage: model.bg}}>
         <p>Название модели : <i>{model.model}</i></p>
-        <p>Цвет модели : <i>{model.color}</i></p>
+        <p>Цвет модели : <i>{model.color}</i> </p>
         <p>Год выпуска : <i> {model.year} </i></p>
-        <p>Объем двигателяб м.куб : <i>{model.vEng}</i></p>
-        <p>Цена, грн : <i>{model.price}</i></p>
+        <p>Объем двигателяб, л : <i>{model.vEng}</i></p>
+        <p>Цена, грн : <i>{model.price} грн</i></p>
         <p>Технические характеристики : <i>{model.desc}</i></p>
+
         <NavLink to={`/all_auto/${brend}`}>На предыдущую страницу </NavLink>
         </div>
     }  
