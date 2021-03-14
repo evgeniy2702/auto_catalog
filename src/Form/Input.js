@@ -2,14 +2,9 @@ import React from "react";
 import "./../style.css";
 import PropTypes from "prop-types";
 
-function Input({ elem, change, onValid }){
+function Input({ elem, change }){
 
-  let type = "text";
-
-  if(elem[1] === "password" || elem[1] === "passwordReg"){
-    type = "password";
-  }
-  
+  let type = "text";  
   
   return(
     <div>
@@ -20,7 +15,6 @@ function Input({ elem, change, onValid }){
               placeholder={"Enter your " + elem[1]}
               value = {elem[0]}
               onChange= {(e)=> change(elem[1],e.target.value )}
-              style = {onValid(elem[0])}
             />
             <br />
             <br />
@@ -31,7 +25,6 @@ function Input({ elem, change, onValid }){
 
 Input.propTypes = {
   elem: PropTypes.array.isRequired,
-  change: PropTypes.func.isRequired,
-  onValid: PropTypes.func.isRequired
+  change: PropTypes.func.isRequired
 }
 export default Input;

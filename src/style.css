@@ -56,3 +56,28 @@ ol{
 width: 100%;
 height: calc(100% - 200px);
 }
+form{
+  padding: 10px;
+  width: 500px;
+  border-radius: 5px;
+  text-align: center;
+  color: rgb(58, 58, 146);
+}
+form p{
+  text-align: left;
+  font-size: 25px;
+  text-decoration: underline;
+  margin-left: 40px;
+}
+label{
+  display: inline-block;
+  width: 200px;
+  margin-right: 10px;
+  text-align: left;
+}
+input{
+  border: 1px solid rgb(114, 108, 108);
+  width: 200px;
+  border-radius: 5px;
+  background-color: rgb(241, 233, 233);
+}
