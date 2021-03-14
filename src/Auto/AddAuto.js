@@ -2,7 +2,7 @@ import React from "react";
 import "./../style.css";
 
 import Input from "./../Form/Input";
-import Select from "./../Form/Select";
+import Option from "./../Form/Option";
 import Brends from "./../Const/Brends";
 
 
@@ -57,7 +57,12 @@ constructor(props){
       <div>
         <h1>Добавить модель авто </h1>
         <form onSubmit={this.onSubmit}>
-        <Select brendsList = {brendsList} />
+        <select>
+        {brendsList.map(item =>
+          <Option brend = {item} key = {index} change = {this.onChange} />
+        )
+        }
+        </select>
         <p>Заполните все поля :</p>
           {data.map( (item, index) => {
           return (<div>
