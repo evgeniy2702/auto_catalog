@@ -9,6 +9,7 @@ import {
 
 import Auto from "./Auto/Auto";
 import AddAuto from "./Auto/AddAuto";
+import AddNewBrend from "./Auto/AddBrend";
 import UpdateAuto from "./Auto/UpdateAuto";
 import DeleteAuto from "./Auto/DeleteAuto";
 import SearchAuto from "./Auto/SearchAuto";
@@ -46,6 +47,11 @@ class Header extends React.Component {
           </li>
           <li>
             <button className="button">
+              <Link to="/add_brend">Добавить новый Бренд</Link>
+            </button>
+          </li>
+          <li>
+            <button className="button">
               <Link to="/update_auto">Редактировать авто</Link>
             </button>
           </li>
@@ -77,6 +83,7 @@ class Main extends React.Component {
         <Switch>
           <Route excat path="/all_auto" component={Auto} />
           <Route path="/add_auto" component={AddAuto} />
+          <Route path="/add_brend" component={AddNewBrend} />
           <Route path="/update_auto" component={UpdateAuto} />
           <Route path="/delete_auto" component={DeleteAuto} />
           <Route path="/search_auto" component={SearchAuto} />

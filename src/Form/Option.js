@@ -8,6 +8,8 @@ function Option({ brend, change }){
   
   return(
     <option 
+    id = {brend}
+    value = {brend}
     onChange= {(e)=> change(elem[1],e.target.value )} > 
     {brend}    
     </option>
@@ -16,6 +18,7 @@ function Option({ brend, change }){
 
 Option.propTypes = {
   brend: PropTypes.string.isRequired,
+  elem: PropTypes.string.isRequired,
   change: PropTypes.func.isRequired
 }
 export default Option;

@@ -5,7 +5,7 @@ import "./../style.css";
 import Models from "./../Models/Models";
 import Model from "./../Models/Model";
 import Brends  from "./../Const/Brends";
-import AutoListByBrend from "./../AutoList/AutoListByBrend";
+import AddAuto from "./../Auto/AddAuto";
 
 
 export default class Item extends Component{
@@ -15,6 +15,7 @@ export default class Item extends Component{
   for(let i=0; i< Brends.length; i++){
     if(Brends[i].nameBrend == brend){
       item = Brends[i];
+      console.log(Brends.length);
       break;
     }
   }
@@ -25,6 +26,7 @@ export default class Item extends Component{
       return <Switch>
         <Route exact path="/all_auto/:brend" component={Models} />
         <Route path="/all_auto/:brend/:id" component={Model} />
+       
       </Switch>
     }  
   }

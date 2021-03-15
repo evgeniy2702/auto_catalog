@@ -5,6 +5,9 @@ import PropTypes from "prop-types";
 function Input({ elem, change }){
 
   let type = "text";  
+  if(elem[1] === "width" || elem[1] === "height" || elem[1] === "year" || elem[1] === "price"){
+    type = "number";
+  }
   
   return(
     <div>

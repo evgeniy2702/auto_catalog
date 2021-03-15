@@ -75,7 +75,7 @@ label{
   margin-right: 10px;
   text-align: left;
 }
-input, select{
+input, select, option{
   border: 1px solid rgb(114, 108, 108);
   width: 200px;
   border-radius: 5px;

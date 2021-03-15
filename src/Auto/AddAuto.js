@@ -5,13 +5,14 @@ import Input from "./../Form/Input";
 import Option from "./../Form/Option";
 import Brends from "./../Const/Brends";
 
+const brendsList = Brends.map(item=>item.nameBrend);
 
 class AddAuto extends React.Component {
 
 constructor(props){
     super(props);
     this.state = {
-      id:0,
+      brend:"",
       model:"",
       color:"",
       year:2000,
@@ -22,16 +23,23 @@ constructor(props){
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }  
 
   onChange(idData,dataInput) {
+    console.log(idData);
     this.setState({[idData]: dataInput})
+  }
+
+  handleChange(e){
+    console.log("select " + e.currentTarget.value);
+    this.setState({brend: e.currentTarget.value });
   }
 
  onSubmit(e){
     e.preventDefault();
     let model={
-      id: 0,
+      id:0,
       model: this.state.model, 
       color: this.state.color,
       year: this.state.year,
@@ -39,11 +47,17 @@ constructor(props){
       price: this.state.price,
       desc: this.state.desc,
       bg:"url(" + this.state.bg + ")"}
+
+      let array = brendsList.filter(item => item === this.state.brend);
+      if(array.length === 1){
+        let idModel = Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models.length + 1;       
+        model.id = idModel;
+        Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models.push(model)  
+        }
  }  
 
   render() {
-    const{id, model, color, year,vEng, price,desc, bg} = this.state;
-    const brendsList = Brends.map(item=>item.nameBrend);
+    const{model, color, year,vEng, price,desc, bg} = this.state;
     const data=[
       [model,"model", "Название модели "],
       [color,"color", "Цвет модели "],
@@ -60,7 +74,8 @@ constructor(props){
         <p>Заполните все поля :</p>
         <div className = "divSelect">
         <span>Выберите название бренда :</span>
-        <select>
+        <select id="brend"  onChange = {this.handleChange}>
+        <option />
         {brendsList.map((item, index) =>
           <Option brend = {item} key = {index} change = {this.onChange} />
         )
@@ -73,7 +88,7 @@ constructor(props){
           <Input elem = {item} key = {index} change = {this.onChange} />
           </div>)
           })}
-          <button >SEND</button>
+          <button>SEND</button>
         </form>
       </div>      
     );

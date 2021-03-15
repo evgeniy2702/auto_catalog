@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./../style.css";
-import { BrowserRouter as Router, NavLink, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route , NavLink, Link, Redirect } from "react-router-dom";
 
 import Brends from "../Const/Brends";
 
@@ -21,12 +21,12 @@ class Models extends Component {
         break;
       }
     }
-    console.log(dataBrend)
+    if(dataBrend.models.models.length !== 0){
     return (
       <div className = "modelsStyle">
       <img style = {dataBrend.style} src={dataBrend.label} />
         <h1>
-        Список всех авто брерда {dataBrend.nameBrend}:</h1>
+        Список всех авто бренда {dataBrend.nameBrend}:</h1>
         <ol>
           {dataBrend.models.models.map(item => (
             <li key={item.id}> 
@@ -44,6 +44,9 @@ class Models extends Component {
         </Router>
       </div>
     );
+    } else {
+      return <Redirect from = "" to="/add_auto" />;
+    }
   }
 }
 
