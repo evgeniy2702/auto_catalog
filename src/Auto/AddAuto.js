@@ -49,10 +49,17 @@ constructor(props){
       bg:"url(" + this.state.bg + ")"}
 
       let array = brendsList.filter(item => item === this.state.brend);
+
+      console.log(brendsList);
+      console.log(array.length);
+
       if(array.length === 1){
         let idModel = Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models.length + 1;       
         model.id = idModel;
-        Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models.push(model)  
+        console.log(model.id);
+        Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models.push(model) 
+
+        console.log(Brends.models.models); 
         }
  }  
 
