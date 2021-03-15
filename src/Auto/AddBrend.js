@@ -57,9 +57,9 @@ constructor(props){
         <h1>Добавить новый бренд : </h1>
         <form onSubmit={this.onSubmit}>
         <p>Заполните все поля :</p>
-          {data.map((item, index) => {
+          {data.map(item => {
           return (<div>
-            <Input elem = {item} key = {index} change = {this.onChange} />
+            <Input elem = {item} key = {item[1]} change = {this.onChange} />
             </div>);
           })}
           <button>SEND</button>

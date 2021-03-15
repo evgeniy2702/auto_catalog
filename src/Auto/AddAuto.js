@@ -50,16 +50,12 @@ constructor(props){
 
       let array = brendsList.filter(item => item === this.state.brend);
 
-      console.log(brendsList);
-      console.log(array.length);
+    
 
       if(array.length === 1){
         let idModel = Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models.length + 1;       
         model.id = idModel;
-        console.log(model.id);
         Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models.push(model) 
-
-        console.log(Brends.models.models); 
         }
  }  
 
@@ -83,16 +79,16 @@ constructor(props){
         <span>Выберите название бренда :</span>
         <select id="brend"  onChange = {this.handleChange}>
         <option />
-        {brendsList.map((item, index) =>
-          <Option brend = {item} key = {index} change = {this.onChange} />
+        {brendsList.map(item =>
+          <Option brend = {item} key = {item.toString()} change = {this.onChange} />
         )
         }
         </select>
         </div>
         <br/>
-          {data.map( (item, index) => {
+          {data.map( item => {
           return (<div>
-          <Input elem = {item} key = {index} change = {this.onChange} />
+          <Input elem = {item} key = {item[1]} change = {this.onChange} />
           </div>)
           })}
           <button>SEND</button>
