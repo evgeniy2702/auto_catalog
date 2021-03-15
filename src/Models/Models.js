@@ -45,7 +45,7 @@ class Models extends Component {
       </div>
     );
     } else {
-      return <Redirect from = "" to="/add_auto" />;
+      return <Redirect from = "/" to="/add_auto" />;
     }
   }
 }

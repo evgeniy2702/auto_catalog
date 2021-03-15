@@ -59,7 +59,7 @@ constructor(props){
         <p>Заполните все поля :</p>
           {data.map(item => {
           return (<div>
-            <Input elem = {item} key = {item[1]} change = {this.onChange} />
+            <Input elem = {item} key = {item[1].toString()} change = {this.onChange} />
             </div>);
           })}
           <button>SEND</button>
