@@ -5,7 +5,6 @@ import "./../style.css";
 import Models from "./../Models/Models";
 import Model from "./../Models/Model";
 import Brends  from "./../Const/Brends";
-import AddAuto from "./../Auto/AddAuto";
 
 
 export default class Item extends Component{
@@ -15,7 +14,6 @@ export default class Item extends Component{
   for(let i=0; i< Brends.length; i++){
     if(Brends[i].nameBrend == brend){
       item = Brends[i];
-      console.log(Brends.length);
       break;
     }
   }

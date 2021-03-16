@@ -6,7 +6,7 @@ import Input from "./../Form/Input";
 import Option from "./../Form/Option";
 import Brends from "./../Const/Brends";
 
-const brendsList = Brends.map(item=>item.nameBrend);
+l brendsList = Brends.map(item=>item.nameBrend);
 
 class AddAuto extends React.Component {
 
