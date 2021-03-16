@@ -1,4 +1,5 @@
 import React from "react";
+import {Redirect} from "react-router-dom";
 import "./../style.css";
 
 import Input from "./../Form/Input";
@@ -19,20 +20,24 @@ constructor(props){
       vEng:"",
       price:0,
       desc:"",
-      bg:""
+      bg:"",
+      logo: false
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.onImageChange = this.onImageChange.bind(this);
   }  
 
   onChange(idData,dataInput) {
-    console.log(idData);
     this.setState({[idData]: dataInput})
   }
-
+  
+  onImageChange(fileList){
+    this.setState({bg: URL.createObjectURL(fileList[0])});
+  }
+   
   handleChange(e){
-    console.log("select " + e.currentTarget.value);
     this.setState({brend: e.currentTarget.value });
   }
 
@@ -48,19 +53,19 @@ constructor(props){
       desc: this.state.desc,
       bg:"url(" + this.state.bg + ")"}
 
-      let array = brendsList.filter(item => item === this.state.brend);
-
-    
+      let array = brendsList.filter(item => item === this.state.brend); 
 
       if(array.length === 1){
         let idModel = Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models.length + 1;       
         model.id = idModel;
         Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models.push(model) 
         }
+
+      this.setState({logo: true});  
  }  
 
   render() {
-    const{model, color, year,vEng, price,desc, bg} = this.state;
+    const{brend, model, color, year,vEng, price,desc, bg, logo} = this.state;
     const data=[
       [model,"model", "Название модели "],
       [color,"color", "Цвет модели "],
@@ -70,6 +75,8 @@ constructor(props){
       [desc,"desc", "Описание модели "],
       [bg,"bg","Добавьте ссылку на фото модели "]
     ]
+
+    if(!logo){
     return (
       <div>
         <h1>Добавить модель авто </h1>
@@ -88,13 +95,16 @@ constructor(props){
         <br/>
           {data.map( item => {
           return (<div>
-          <Input elem = {item} key = {item[1].toString()} change = {this.onChange} />
+          <Input elem = {item} key = {item[1].toString()} change = {this.onChange} image = {this.onImageChange} />
           </div>)
           })}
           <button>SEND</button>
         </form>
       </div>      
     );
+    } else {
+      return <Redirect from="/add_auto" to={`/all_auto/${brend}`} />
+    }
   }
 }
 
