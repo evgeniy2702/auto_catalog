@@ -6,8 +6,6 @@ import Input from "./../Form/Input";
 import Option from "./../Form/Option";
 import Brends from "./../Const/Brends";
 
-l brendsList = Brends.map(item=>item.nameBrend);
-
 class AddAuto extends React.Component {
 
 constructor(props){
@@ -53,7 +51,7 @@ constructor(props){
       desc: this.state.desc,
       bg:"url(" + this.state.bg + ")"}
 
-      let array = brendsList.filter(item => item === this.state.brend); 
+      let array = Brends.map(item => item.nameBrend).filter(item => item === this.state.brend); 
 
       if(array.length === 1){
         let idModel = Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models.length + 1;       
@@ -65,6 +63,7 @@ constructor(props){
  }  
 
   render() {
+    let brendsList = Brends.map(item=>item.nameBrend);
     const{brend, model, color, year,vEng, price,desc, bg, logo} = this.state;
     const data=[
       [model,"model", "Название модели "],
@@ -86,16 +85,16 @@ constructor(props){
         <span>Выберите название бренда :</span>
         <select id="brend"  onChange = {this.handleChange}>
         <option />
-        {brendsList.map(item =>
-          <Option brend = {item} key = {item.toString()} change = {this.onChange} />
-        )
+        {brendsList.map((item) =>{
+            return <Option key={item.toString()} brend = {item}  change = {this.onChange} />
+        })
         }
         </select>
         </div>
         <br/>
-          {data.map( item => {
+          {data.map( (item, index) => {
           return (<div>
-          <Input elem = {item} key = {item[1].toString()} change = {this.onChange} image = {this.onImageChange} />
+          <Input  key={item[1]} elem = {item}  change = {this.onChange} image = {this.onImageChange} />
           </div>)
           })}
           <button>SEND</button>
@@ -103,7 +102,7 @@ constructor(props){
       </div>      
     );
     } else {
-      return <Redirect from="/add_auto" to={`/all_auto/${brend}`} />
+      return <Redirect from="/add_auto" to={`/all_auto/${brend}`}  brends = {Brends} />
     }
   }
 }

@@ -2,10 +2,10 @@ import React from "react";
 import "./../style.css";
 import PropTypes from "prop-types";
 
-function Option({ brend, change }){
+function Option({ brend, change}){
 
   let type = "text";  
-  
+  console.log(brend);
   return(
     <option 
     id = {brend}

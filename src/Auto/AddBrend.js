@@ -35,6 +35,7 @@ constructor(props){
 
  onSubmit(e){
     e.preventDefault();
+    this.setState({redirect: true});
     let models = {id: Models.length + 1, models:[]};
     Models.push(models);
     let brend={
@@ -45,8 +46,7 @@ constructor(props){
       linkBySite: this.state.linkBySite,
       models: Models[Models.length-1]
       };
-    Brends.push(brend);
-    this.setState({redirect: true});
+    Brends.push(brend);    
  }  
 
   render() {
@@ -65,8 +65,9 @@ constructor(props){
         <form onSubmit={this.onSubmit}>
         <p>Заполните все поля :</p>
           {data.map(item => {
+            console.log(item[1].toString());
           return (<div>
-            <Input  key = {item[1].toString()} elem = {item} change = {this.onChange} image = {this.onImageChange}/>
+            <Input  key = {item[1]} elem = {item} change = {this.onChange} image = {this.onImageChange}/>
             </div>);
           })}
           <button>SEND</button>
