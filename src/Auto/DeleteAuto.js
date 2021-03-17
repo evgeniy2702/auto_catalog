@@ -13,7 +13,6 @@ class UpdateAuto extends React.Component {
     this.state = {
       brend:"",
       arrayModelsByBrend: [],
-      messege: "",
       deleteModel: "delete"
     };
     this.onChange = this.onChange.bind(this);
@@ -27,7 +26,7 @@ class UpdateAuto extends React.Component {
 
   handleChange(e){
     this.setState({brend: e.currentTarget.value });
-    this.setState({messege: "done"});
+   
   }
 
   onSubmit(e){
@@ -38,17 +37,15 @@ class UpdateAuto extends React.Component {
   
 
   render() {
-    const {brend, deleteModel, messege , arrayModelsByBrend} = this.state;
-    console.dir(arrayModelsByBrend);
-    console.dir(brend);
-    console.dir(messege);
+    const {brend, deleteModel, arrayModelsByBrend} = this.state;
+
     return (
       <div>
-        <h1>Удаление модели авто </h1>
+        <h1>Удаление модели бренда </h1>
         <form onSubmit={this.onSubmit}>
           <p>Выберите наименование бренда :</p>
           <div className = "divSelect">
-          <span>Выберите название бренда :</span>
+          <span>Название бренда :</span>
           <select id="brend"  onChange = {this.handleChange}>
             <option />
             {Brends.map(item => item.nameBrend).map((item) =>{
@@ -59,15 +56,12 @@ class UpdateAuto extends React.Component {
           </div>
           <br/>           
            <button>SEND</button>
-           {
-             arrayLength(brend,arrayModelsByBrend)
-          
-           }
         </form>
          
     <ul className = "updateLi">
     { 
         arrayModelsByBrend.map(item => {
+
           return <li key={item.id}>
               <span>- </span>
               {item.model}
@@ -77,19 +71,10 @@ class UpdateAuto extends React.Component {
             </li>
            
           })}
-    </ul>       
+    </ul>   
+    <NavLink style={{textDecoration:"underline"}} to="/all_auto" >Перейти в каталог брендов</NavLink>    
      </div>  
    );
-  }
 }
-
+}
 export default UpdateAuto;
-
-function arrayLength(brend,messege){
-  if(brend !== "" && messege !== "done" ){
-      return  <div><br/><NavLink  to="/all_auto" style={{textDecoration: "underline"}}>
-              У данного бренда не моделей авто. Вернуться на страницу просмотра брендов 
-              </NavLink>
-              </div>
-             }
-}

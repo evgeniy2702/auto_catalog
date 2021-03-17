@@ -44,7 +44,7 @@ class UpdateAuto extends React.Component {
         <form onSubmit={this.onSubmit}>
           <p>Выберите наименование бренда :</p>
           <div className = "divSelect">
-          <span>Выберите название бренда :</span>
+          <span>Название бренда :</span>
           <select id="brend"  onChange = {this.handleChange}>
             <option />
             {Brends.map(item => item.nameBrend).map((item) =>{

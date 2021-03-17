@@ -29,9 +29,7 @@ constructor(props){
     models: Models
   }
 }
-  render() {
-    const {brends, models} = this.state;
-    
+  render() {    
     
     return (
       <Router>
@@ -41,55 +39,63 @@ constructor(props){
       </Router>
     );
   }
-  componentDidUpdate(){
-       this.setState({brends:Brends});
-    console.log("App " + brends);
-    this.setState({models: Models});
-    console.log("App " + models);
-     
-    };
 }
 
 export default AutoCatalog;
 
 class Header extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      color: "rgb(149, 149, 214)"
+    };
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(){
+    if(this.state.color === "rgb(149, 149, 214)")
+    this.setState({color: "#83838e"});
+    else this.setState({color: "rgb(149, 149, 214)"});
+  }
+
   render() {
     
     return (
       <header>
         <ul>
           <li>
-            <button className="button">
+            <button className="button" onClick={(e)=>(this.onClick)} style = {{backgroundColor: this.state.color}}>
               <Link to="/all_auto">Просмотреть авто</Link>
             </button>
           </li>
           <li>
-            <button className="button">
+            <button className="button" onClick={this.onClick} style = {{backgroundColor: this.state.color}}>
               <Link to="/add_auto">Добавить авто</Link>
             </button>
           </li>
           <li>
-            <button className="button">
+            <button className="button" onClick={this.onClick} style = {{backgroundColor: this.state.color}}>
               <Link to="/add_brend">Добавить новый Бренд</Link>
             </button>
           </li>
           <li>
-            <button className="button">
+            <button className="button" onClick={this.onClick} style = {{backgroundColor: this.state.color}}>
               <Link to="/update_auto">Редактировать авто</Link>
             </button>
           </li>
           <li>
-            <button className="button">
+            <button className="button" onClick={this.onClick} style = {{backgroundColor: this.state.color}}>
               <Link to="/delete_auto">Удалить авто</Link>
             </button>
           </li>
           <li>
-            <button className="button">
+            <button className="button" onClick={this.onClick} style = {{backgroundColor: this.state.color}}>
               <Link to="/search_auto">Найти авто</Link>
             </button>
           </li>
           <li>
-            <button className="button">
+            <button className="button" onClick={this.onClick} style = {{backgroundColor: this.state.color}}>
               <Link to="/">На стартовую страницу</Link>
             </button>
           </li>
