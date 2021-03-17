@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./../style.css";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 
 import Brends from "../Const/Brends";
 import Input from "./../Form/Input";
@@ -10,7 +10,9 @@ class Model extends Component{
 brend = this.props.match.params.brend;
 id = this.props.match.params.id;
 flag = this.props.match.params.flag;
+deleteModel = this.props.match.params.deleteModel;
 item = creatModel(this.brend, this.id);
+
 
 constructor(props){
     super(props);
@@ -22,13 +24,15 @@ constructor(props){
       price:this.item.price,
       desc:this.item.desc,
       bg:this.item.bg,
-      sign: this.flag
+
+      update: this.flag,
+      deleteAct: this.deleteModel
     };
     this.updateState = this.updateState.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onImageChange = this.onImageChange.bind(this);
-  }  
+  } 
 
   updateState(item){
     this.setState({model: item.model});
@@ -38,8 +42,6 @@ constructor(props){
   }
 
   onChange(idData,dataInput) {
-    
-      console.log(dataInput);
       this.setState({[idData]: dataInput});
     
     }
@@ -57,20 +59,24 @@ constructor(props){
     this.item.price = this.state.price;
     this.item.desc = this.state.desc;
     this.item.bg = "url(" + this.state.bg + ")";  
-    this.setState({tsign: true});
+    this.setState({update: false});
     
     Brends.filter(item => item.nameBrend === this.brend)[0].models.models.splice((this.id-1),1,this.item);
   }
 
 
   render(){ 
-   
+    
+   if(this.state.deleteAct === "delete"){
+    Brends.filter(item => item.nameBrend === this.brend)[0].models.models.splice((this.id-1),1);
+    return <Redirect from = "/delete_auto" to = {`/all_auto/${this.brend}`} />
+  } 
+
   if(this.item === undefined){
       return <h1>Модели с таким {this.id} не существует</h1>;
   }
-  if(!this.sign || this.sign === undefined){
-      console.log(this.sign);
-      console.dir(Brends);
+  if( !this.state.update || this.state.update === undefined){
+      
       return <div className="model" style = {{
         backgroundImage: this.item.bg}}>
         <p>Название модели : <i>{this.item.model}</i></p>
@@ -80,7 +86,7 @@ constructor(props){
         <p>Цена, грн : <i>{this.item.price} грн</i></p>
         <p>Технические характеристики : <i>{this.item.desc}</i></p>
 
-        <NavLink to={`/all_auto/${this.brend}`}>На предыдущую страницу </NavLink>
+        <NavLink to={`/all_auto/${this.brend}`}>Вернуться к списку моделей бренда </NavLink>
         </div>
     } else {
           const{model, color, year,vEng, price,desc, bg} = this.state;          
@@ -93,14 +99,14 @@ constructor(props){
               [desc,"desc", "Описание модели "],
               [bg,"bg","Добавьте ссылку на фото модели "]
           ]
-
+        
        return <form onSubmit = {this.onSubmit}>
           {data.map(item => {
             return <Input  key={item.id} elem = {item}  change = {this.onChange} image = {this.onImageChange} /> 
           })}
           <button>SEND</button>
        </form>
-    }   
+    } 
   }
 }
 

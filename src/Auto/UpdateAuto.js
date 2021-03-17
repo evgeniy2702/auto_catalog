@@ -25,7 +25,6 @@ class UpdateAuto extends React.Component {
   }
 
   handleChange(e){
-    console.log("handleChange " + e.currentTarget.value);
     this.setState({brend: e.currentTarget.value });
   }
 
