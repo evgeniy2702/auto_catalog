@@ -40,9 +40,9 @@ class SearchAuto extends React.Component {
     for(let i=0; i< array.length; i++) {
       for(let j=0; j < array[i].length; i++){
         for(var key in array[i][j]){
-          console.log(this.state.nameParams + "/ " + this.state.item + " /" + array[i][j][key])
+          console.log(this.state.nameParams + "// " + this.state.item + " //" + array[i][j][key])
           if(this.state.item === array[i][j][key]){
-            console.log(key + " " + array[i][j][key] + this.state.nameParams);
+            console.log(key + " ///" + array[i][j][key] + "/// " + this.state.nameParams);
 
           }
       }
