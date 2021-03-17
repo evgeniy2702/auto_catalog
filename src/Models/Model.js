@@ -7,31 +7,40 @@ import Input from "./../Form/Input";
 
 class Model extends Component{
 
+brend = this.props.match.params.brend;
+id = this.props.match.params.id;
+flag = this.props.match.params.flag;
+item = creatModel(this.brend, this.id);
+
 constructor(props){
     super(props);
     this.state = {
-      model:"",
-      color:"red",
-      year:0,
-      vEng:"",
-      price:0,
-      desc:"",
-      bg:""
+      model:this.item.model,
+      color:this.item.color,
+      year:this.item.year,
+      vEng:this.item.vEng,
+      price:this.item.price,
+      desc:this.item.desc,
+      bg:this.item.bg
     };
+    this.updateState = this.updateState.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onImageChange = this.onImageChange.bind(this);
   }  
 
+  updateState(item){
+    this.setState({model: item.model});
+    this.setState({color: item.model});
+    this.setState({year: item.model});
+    this.setState({vEng: item.model});
+  }
 
   onChange(idData,dataInput) {
-    if(dataInput !== "" || dataInput !== 0){
+    
       console.log(dataInput);
       this.setState({[idData]: dataInput});
-    } else {
-      console.log("null " + dataInput);
-      dataInput = "";
-    }
+    
     }
   
   onImageChange(fileList){
@@ -40,15 +49,64 @@ constructor(props){
 
   onSubmit(e){
     e.preventDefault();
-    console.log("HI");
+    this.item.model = this.state.model;
+    this.item.color = this.state.color;
+    this.item.year = this.state.year;
+    this.item.vEng = this.state.vEng;
+    this.item.price = this.state.price;
+    this.item.desc = this.state.desc;
+    if(this.state.bg !== undefined ){
+      this.item.bg = "url(" + this.state.bg + ")";  
+    }
+    
+    Brends.filter(item => item.nameBrend === this.brend)[0].models.models.splice((this.id-1),1,this.item);
   }
 
 
   render(){ 
-  const brend = this.props.match.params.brend;
-  const id = this.props.match.params.id;
-  const flag = this.props.match.params.flag;
-  let item;
+   
+  if(this.item === undefined){
+      return <h1>Модели с таким {this.id} не существует</h1>;
+  }
+  if(!this.flag || this.flag === undefined){
+      console.dir(Brends);
+      return <div className="model" style = {{
+        backgroundImage: this.item.bg}}>
+        <p>Название модели : <i>{this.item.model}</i></p>
+        <p>Цвет модели : <i>{this.item.color}</i> </p>
+        <p>Год выпуска : <i> {this.item.year} </i></p>
+        <p>Объем двигателяб, л : <i>{this.item.vEng}</i></p>
+        <p>Цена, грн : <i>{this.item.price} грн</i></p>
+        <p>Технические характеристики : <i>{this.item.desc}</i></p>
+
+        <NavLink to={`/all_auto/${this.brend}`}>На предыдущую страницу </NavLink>
+        </div>
+    } else {
+          const{model, color, year,vEng, price,desc, bg} = this.state;          
+          const data=[
+              [model,"model", "Название модели "],
+              [color,"color", "Цвет модели "],
+              [year,"year", "Год выпуска модели "],
+              [vEng,"vEng", "Объем двигателя модели "],
+              [price,"price", "Цена модели "],
+              [desc,"desc", "Описание модели "],
+              [bg,"bg","Добавьте ссылку на фото модели "]
+          ]
+
+       return <form onSubmit = {this.onSubmit}>
+          {data.map(item => {
+            return <Input  key={item.id} elem = {item}  change = {this.onChange} image = {this.onImageChange} /> 
+          })}
+          <button>SEND</button>
+       </form>
+    }   
+  }
+}
+
+export default Model;
+
+function creatModel(brend, id){
+    let item;
 
   for(let i=0; i< Brends.length; i++){
     if(Brends[i].nameBrend == brend){
@@ -65,43 +123,5 @@ constructor(props){
           break;
         }
   }      
-  if(item === undefined){
-      return <h1>Модели с таким {id} не существует</h1>;
-  }
-  if(!flag || flag === undefined){
-    console.log("if " + id + " " + brend + " " + flag);
-      return <div className="model" style = {{
-        backgroundImage: modelThis.bg}}>
-        <p>Название модели : <i>{modelThis.model}</i></p>
-        <p>Цвет модели : <i>{modelThis.color}</i> </p>
-        <p>Год выпуска : <i> {modelThis.year} </i></p>
-        <p>Объем двигателяб, л : <i>{modelThis.vEng}</i></p>
-        <p>Цена, грн : <i>{modelThis.price} грн</i></p>
-        <p>Технические характеристики : <i>{modelThis.desc}</i></p>
-
-        <NavLink to={`/all_auto/${brend}`}>На предыдущую страницу </NavLink>
-        </div>
-    } else {
-          const{model, color, year,vEng, price,desc, bg} = this.state; 
-          const data=[
-              [model,"model", "Название модели "],
-              [color,"color", "Цвет модели "],
-              [year,"year", "Год выпуска модели "],
-              [vEng,"vEng", "Объем двигателя модели "],
-              [price,"price", "Цена модели "],
-              [desc,"desc", "Описание модели "],
-              [modelThis.bg,"bg","Добавьте ссылку на фото модели "]
-          ]
-
-          console.log("if " + id + " " + brend + " " + flag);
-       return <form onSubmit = {this.onSubmit}>
-          {data.map(item => {
-            return <Input  key={item.id} elem = {item}  change = {this.onChange} image = {this.onImageChange} /> 
-          })}
-          <button>SEND</button>
-       </form>
-    }   
-  }
+return modelThis;
 }
-
-export default Model;

@@ -17,7 +17,7 @@ function Input({ elem, change, image }){
   }
 
   if(type !== "file"){
-    console.log("Input " + elem[0]);
+    
   return(
     <div>
       <label>{elem[2]} :</label>
