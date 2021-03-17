@@ -1,7 +1,7 @@
 import React from "react";
 import "./../style.css";
+import {NavLink} from "react-router-dom";
 
-import Input from "./../Form/Input";
 import Option from "./../Form/Option";
 import Brends from "./../Const/Brends";
 
@@ -11,7 +11,9 @@ class UpdateAuto extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      brend:""
+      brend:"",
+      arrayModelsByBrend: [],
+      flag: true
     };
     this.onChange = this.onChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -29,15 +31,19 @@ class UpdateAuto extends React.Component {
 
   onSubmit(e){
     e.preventDefault();
-    console.log("submit " + this.state.brend);
+    this.setState({arrayModelsByBrend: Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models});
   }
 
+  
+
   render() {
+    const {brend, flag, arrayModelsByBrend} = this.state;
+
     return (
       <div>
         <h1>Редактировать модель авто </h1>
         <form onSubmit={this.onSubmit}>
-          <p>Обновите поля, которые нуждаются в корректировке :</p>
+          <p>Выберите наименование бренда :</p>
           <div className = "divSelect">
           <span>Выберите название бренда :</span>
           <select id="brend"  onChange = {this.handleChange}>
@@ -46,14 +52,29 @@ class UpdateAuto extends React.Component {
                 return <Option key={item.toString()} brend = {item}  change = {this.onChange} />
             })
             }
-          </select>
+          </select>     
           </div>
           <br/>           
            <button>SEND</button>
         </form>
-      </div>      
-    );
-  }
+         
+    <ul className = "updateLi">
+    { 
+        arrayModelsByBrend.map(item => {
+
+          return <li key={item.id}>
+              <span>- </span>
+              {item.model}
+              <NavLink  to={`/all_auto/${brend}/${item.id}/${flag}`}>
+              перейдите по ссылке для редактирования 
+              </NavLink>
+            </li>
+           
+          })}
+    </ul>       
+     </div>  
+   );
+}
 }
 
 export default UpdateAuto;

@@ -29,7 +29,10 @@ a{
 .button{
   background-color: rgb(149, 149, 214);
 }
-.modelsStyle li {
+.updateLi{
+  text-align: left;
+}
+.modelsStyle li, .updateLi li {
   display: block;
   font-size: 25px;
 }
@@ -42,11 +45,11 @@ ol{
   text-align: left;
   list-style-type: decimal;
 }
-.modelsStyle span{
+.modelsStyle span {
   font-size: 20px;
   margin-right: 10px;
 }
-.model a{
+.model a, .updateLi a{
   text-decoration: underline blue;
   margin-left: 25px;
   font-size: 15px;

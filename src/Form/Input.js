@@ -22,6 +22,7 @@ function Input({ elem, change, image }){
       <label>{elem[2]} :</label>
             <input
               id = {elem[1]}
+              value = {elem[0]}
               type= {type}
               accept = {accept}
               placeholder={"Enter your " + elem[1]} 

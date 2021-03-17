@@ -23,8 +23,7 @@ export default class Item extends Component{
     else{
       return <Switch>
         <Route exact path="/all_auto/:brend" component={Models} />
-        <Route path="/all_auto/:brend/:id" component={Model} />
-       
+        <Route path="/all_auto/:brend/:id/:flag?" component={Model} />
       </Switch>
     }  
   }
