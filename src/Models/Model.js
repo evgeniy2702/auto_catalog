@@ -11,8 +11,8 @@ constructor(props){
     super(props);
     this.state = {
       model:"",
-      color:"",
-      year:2000,
+      color:"red",
+      year:0,
       vEng:"",
       price:0,
       desc:"",
@@ -25,7 +25,13 @@ constructor(props){
 
 
   onChange(idData,dataInput) {
-      this.setState({[idData]: dataInput})
+    if(dataInput !== "" || dataInput !== 0){
+      console.log(dataInput);
+      this.setState({[idData]: dataInput});
+    } else {
+      console.log("null " + dataInput);
+      dataInput = "";
+    }
     }
   
   onImageChange(fileList){
@@ -38,8 +44,7 @@ constructor(props){
   }
 
 
-  render(){
-  const{model, color, year,vEng, price,desc, bg} = this.state;  
+  render(){ 
   const brend = this.props.match.params.brend;
   const id = this.props.match.params.id;
   const flag = this.props.match.params.flag;
@@ -51,7 +56,8 @@ constructor(props){
       break;
       }
     }
-  let modelThis = {id:0,model:"", color:"", year: 0, vEng: 0, price: 0, desc: "", bg:""};
+
+ let modelThis=[];
 
   for(let j = 0; j< item.models.length; j++){
         if(id == item.models[j].id){
@@ -76,6 +82,7 @@ constructor(props){
         <NavLink to={`/all_auto/${brend}`}>На предыдущую страницу </NavLink>
         </div>
     } else {
+          const{model, color, year,vEng, price,desc, bg} = this.state; 
           const data=[
               [model,"model", "Название модели "],
               [color,"color", "Цвет модели "],
@@ -83,13 +90,13 @@ constructor(props){
               [vEng,"vEng", "Объем двигателя модели "],
               [price,"price", "Цена модели "],
               [desc,"desc", "Описание модели "],
-              [bg,"bg","Добавьте ссылку на фото модели "]
+              [modelThis.bg,"bg","Добавьте ссылку на фото модели "]
           ]
 
           console.log("if " + id + " " + brend + " " + flag);
        return <form onSubmit = {this.onSubmit}>
           {data.map(item => {
-            return <Input  key={item.id} elem = {[]}  change = {this.onChange} image = {this.onImageChange} /> 
+            return <Input  key={item.id} elem = {item}  change = {this.onChange} image = {this.onImageChange} /> 
           })}
           <button>SEND</button>
        </form>

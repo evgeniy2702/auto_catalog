@@ -17,6 +17,7 @@ function Input({ elem, change, image }){
   }
 
   if(type !== "file"){
+    console.log("Input " + elem[0]);
   return(
     <div>
       <label>{elem[2]} :</label>
@@ -26,7 +27,7 @@ function Input({ elem, change, image }){
               type= {type}
               accept = {accept}
               placeholder={"Enter your " + elem[1]} 
-              onChange= {(e)=> change(elem[1],e.target.value )}
+              onChange= {(e)=> change(elem[1],e.currentTarget.value )}
             />
             <br />
             <br />
