@@ -3,7 +3,8 @@ import "./../style.css";
 import {NavLink} from "react-router-dom";
 
 import Option from "./../Form/Option";
-import Brends from "./../Const/Brends";
+import Input from "./../Form/Input";
+import Models from "./../Const/Models";
 
 
 class SearchAuto extends React.Component {
@@ -11,7 +12,8 @@ class SearchAuto extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      nameParams:"aa",
+      nameParams:"",
+      item:"",
       arrayParams: []
     };
     this.onChange = this.onChange.bind(this);
@@ -24,15 +26,13 @@ class SearchAuto extends React.Component {
   }
 
   handleChange(e){
-    this.setState({nameParams: e.currentTarget.value });
-   console.log(e.currentTarget.value + " " + this.state.nameParams);
+    let index = document.getElementById(e.target.id).selectedIndex ;
+    this.state.nameParams = document.getElementsByTagName("option")[index].id;
   }
 
   onSubmit(e){
     e.preventDefault();
-    if(this.state.brend !== "")
-    this.setState({arrayModelsByBrend: Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models});
-    else this.setState ({arrayModelsByBrend:[]});
+    
   }
 
   
@@ -55,7 +55,8 @@ class SearchAuto extends React.Component {
                 return <Option key={item.toString()} brend = {item[0]} value = {item[1]}  change = {this.onChange} />
             })
             }
-          </select>
+            </select>
+            <Input  key={1} elem = {[this.item, "parametr", "Введите параметр : "]}  change = {this.onChange} /> 
           </div>
           <br/>           
            <button>SEND</button>

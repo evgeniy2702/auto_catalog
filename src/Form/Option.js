@@ -22,7 +22,7 @@ function Option({ brend, change, value}){
     <option 
     id = {brend}
     value = {value}
-    onChange= {(e)=> change(e.currentTarget.value )} > 
+    onChange= {(e)=> change(e.target.id )} > 
     {value}    
     </option>
   )
