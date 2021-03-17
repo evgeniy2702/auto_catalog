@@ -23,6 +23,8 @@ class SearchAuto extends React.Component {
 
   onChange(dataId, dataInput){
     this.setState({[dataId] : dataInput});
+    this.state.item = dataInput;
+    console.log([dataId] + "/ " + dataInput + "/" + this.state.item);
   }
 
   handleChange(e){
@@ -32,7 +34,18 @@ class SearchAuto extends React.Component {
 
   onSubmit(e){
     e.preventDefault();
-    
+    for(let i=0; i< Models.length; i++) {
+      for(let j=0; j < Models[i].models.length; i++){
+        for(var key in Models[i].models[j]){
+          console.log(this.state.nameParams + "/ " + this.state.item + " /" + Models[i].models[j][key])
+          if(this.state.item === Models[i].models[j][key]){
+            console.log(key + " " + Models[i].models[j].model + this.state.nameParams);
+            
+          }
+      }
+      }
+    }
+    console.log(this.state.arrayParams);
   }
 
   
