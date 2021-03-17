@@ -21,7 +21,8 @@ constructor(props){
       vEng:this.item.vEng,
       price:this.item.price,
       desc:this.item.desc,
-      bg:this.item.bg
+      bg:this.item.bg,
+      sign: this.flag
     };
     this.updateState = this.updateState.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -55,9 +56,8 @@ constructor(props){
     this.item.vEng = this.state.vEng;
     this.item.price = this.state.price;
     this.item.desc = this.state.desc;
-    if(this.state.bg !== undefined ){
-      this.item.bg = "url(" + this.state.bg + ")";  
-    }
+    this.item.bg = "url(" + this.state.bg + ")";  
+    this.setState({tsign: true});
     
     Brends.filter(item => item.nameBrend === this.brend)[0].models.models.splice((this.id-1),1,this.item);
   }
@@ -68,7 +68,8 @@ constructor(props){
   if(this.item === undefined){
       return <h1>Модели с таким {this.id} не существует</h1>;
   }
-  if(!this.flag || this.flag === undefined){
+  if(!this.sign || this.sign === undefined){
+      console.log(this.sign);
       console.dir(Brends);
       return <div className="model" style = {{
         backgroundImage: this.item.bg}}>

@@ -65,7 +65,7 @@ constructor(props){
         <form onSubmit={this.onSubmit}>
         <p>Заполните все поля :</p>
           {data.map(item => {
-            console.log(item[1].toString());
+            
           return (<div>
             <Input  key = {item[1]} elem = {item} change = {this.onChange} image = {this.onImageChange}/>
             </div>);
