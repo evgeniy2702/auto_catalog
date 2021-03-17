@@ -6,7 +6,7 @@ import Option from "./../Form/Option";
 import Brends from "./../Const/Brends";
 
 
-class UpdateAuto extends React.Component {
+class DeleteAuto extends React.Component {
 
   constructor(props){
     super(props);
@@ -31,7 +31,9 @@ class UpdateAuto extends React.Component {
 
   onSubmit(e){
     e.preventDefault();
+    if(this.state.brend !== "")
     this.setState({arrayModelsByBrend: Brends.filter(item => item.nameBrend === this.state.brend)[0].models.models});
+    else this.setState ({arrayModelsByBrend:[]});
   }
 
   
@@ -77,4 +79,4 @@ class UpdateAuto extends React.Component {
    );
 }
 }
-export default UpdateAuto;
+export default DeleteAuto;
