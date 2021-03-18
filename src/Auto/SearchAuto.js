@@ -35,20 +35,25 @@ class SearchAuto extends React.Component {
   onSubmit(e){
     e.preventDefault();
     let array = Models.map(item => item.models);
-    console.dir(array);
-
+    
+    console.dir(array)
+    let arr = [];
     for(let i=0; i< array.length; i++) {
-      for(let j=0; j < array[i].length; i++){
-        for(var key in array[i][j]){
-          console.log(this.state.nameParams + "// " + this.state.item + " //" + array[i][j][key])
-          if(this.state.item === array[i][j][key]){
-            console.log(key + " ///" + array[i][j][key] + "/// " + this.state.nameParams);
-
-          }
-      }
+      for(let j=0; j< array[i].length; j++){
+        
+        for( var key in array[i][j]){
+        
+          if(array[i][j][key] === this.state.item){
+            console.dir( "1 " + arr);
+            arr = arr.push(array[i][j]);
+            console.dir("2 " + arr);
+          };
+        
+        }
       }
     }
-    console.log(this.state.arrayParams);
+    this.state.arrayParams = arr;
+    console.dir("arrayParams " + this.state.arrayParams);
   }
 
   
