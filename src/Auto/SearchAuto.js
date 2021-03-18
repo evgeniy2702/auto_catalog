@@ -13,7 +13,7 @@ class SearchAuto extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      brend:"",
+      brend:[],
       nameParams:"",
       item:"",
       arrayParams: []
@@ -39,18 +39,24 @@ class SearchAuto extends React.Component {
     let arrayModels = Brends.map(item => item.models);
     let array = arrayModels.map(item => item.models);
     let arr = [];
+    let ids = [];
     for(let i=0; i< array.length; i++) {
+      let id = Brends[i].id;
+      
       for(let j=0; j< array[i].length; j++){
         
+        
         for( let s = 0; s < Object.values(array[i][j]).length ; s++){
-          
+          console.log(Object.values(array[i][j])[s] + " " + this.state.item + " " + (Object.values(array[i][j])[s] === this.state.item));
           if(Object.values(array[i][j])[s] === this.state.item){            
-            let str = Brends.filter(item => item.id === Object.values(array[i][j])[0])[0].nameBrend;
-            console.log(str);
+            let str = Brends.filter(item => item.id === id)[0].nameBrend;
+            
             this.setState({brend: str});
             const obj = array[i][j];
+            ids = [...ids,];
             arr = [...arr, obj];
-            
+            console.log(arr);
+            console.log(ids);
             break;
           }
                
@@ -58,7 +64,14 @@ class SearchAuto extends React.Component {
       }
     }
    
-    this.setState({arrayParams: arr});
+    
+    this.state.arrayParams = arr;
+    this.state.brend = ids;
+
+    this.setState({arrayParams: this.state.arrayParams});
+    this.setState({brend: this.state.brend});
+    console.log(this.state.arrayParams);
+    console.log(this.state.brend);
     
   }
 

@@ -17,7 +17,7 @@ let Models =[
     id:2,
     models:[
       {
-        id:1,model:"T-Cross", color:"Серый металик", year: 1978, vEng:"1.0 TSI(115 л.с.)", price: 630386, desc: "Здесь должен быть перечень всех технических характеристик",
+        id:1,model:"T-Cross", color:"Металик", year: 1978, vEng:"1.0 TSI(115 л.с.)", price: 630386, desc: "Здесь должен быть перечень всех технических характеристик",
         bg:"url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/2019_Volkswagen_T-Cross_R-Line_TSi_1.0_Front.jpg/1200px-2019_Volkswagen_T-Cross_R-Line_TSi_1.0_Front.jpg)"
       },
       {
