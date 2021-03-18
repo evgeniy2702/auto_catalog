@@ -10,7 +10,7 @@ h1 {
 }
 p {
   text-align: left;
-  color: rgb(81, 81, 100);
+  color: rgb(195, 195, 206);
 }
 
 li{
@@ -20,7 +20,7 @@ li{
 
 a {
   text-decoration: none;
-  color: rgb(218, 205, 205);
+  color: rgb(51, 48, 48);
   font-size: 20px;
 }
 .listBrends{
@@ -58,7 +58,7 @@ ol{
   text-align: left;
   margin-left: 25px;
   font-size: 15px;
-  color: rgb(182, 182, 192)
+  color: rgb(49, 49, 51)
 }
 .model{
 width: 100%;
