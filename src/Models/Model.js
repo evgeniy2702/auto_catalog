@@ -76,8 +76,8 @@ constructor(props){
       return <h1>Модели с таким {this.id} не существует</h1>;
   }
   if( !this.state.update || this.state.update === undefined){
-      document.getElementById("root").style.backgroundImage = this.item.bg;
-      return <div className="model" >
+      
+      return <div className="model" style={{backgroundImage:this.item.bg}}>
         <p>Название модели : <i>{this.item.model}</i></p>
         <p>Цвет модели : <i>{this.item.color}</i> </p>
         <p>Год выпуска : <i> {this.item.year} </i></p>
