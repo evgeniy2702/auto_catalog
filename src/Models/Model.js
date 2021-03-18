@@ -84,7 +84,7 @@ constructor(props){
         <p>Объем двигателяб, л : <i>{this.item.vEng}</i></p>
         <p>Цена, грн : <i>{this.item.price} грн</i></p>
         <p>Технические характеристики : <i>{this.item.desc}</i></p>
-
+        
         <NavLink to={`/all_auto/${this.brend}`}>Вернуться к списку моделей бренда </NavLink>
         </div>
     } else {
