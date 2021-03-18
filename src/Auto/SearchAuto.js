@@ -46,39 +46,30 @@ class SearchAuto extends React.Component {
       for(let j=0; j< array[i].length; j++){
         
         
-        for( let s = 0; s < Object.values(array[i][j]).length ; s++){
-          console.log(Object.values(array[i][j])[s] + " " + this.state.item + " " + (Object.values(array[i][j])[s] === this.state.item));
+        for( let s = 0; s < Object.values(array[i][j]).length ; s++){          
           if(Object.values(array[i][j])[s] === this.state.item){            
             let str = Brends.filter(item => item.id === id)[0].nameBrend;
             
             this.setState({brend: str});
             const obj = array[i][j];
-            ids = [...ids,];
-            arr = [...arr, obj];
-            console.log(arr);
-            console.log(ids);
+            let newObj = {id: str, model: obj};
+            
+            arr = [...arr, newObj]
+            
             break;
           }
                
         }
       }
     }
-   
-    
     this.state.arrayParams = arr;
-    this.state.brend = ids;
-
     this.setState({arrayParams: this.state.arrayParams});
-    this.setState({brend: this.state.brend});
-    console.log(this.state.arrayParams);
-    console.log(this.state.brend);
-    
   }
 
   
 
   render() {
-    const { arrayParams, brend } = this.state;
+    const { arrayParams } = this.state;
     const data=[
               ["model", "По названию модели"], ["color", "По цвету"], ["year", "По году выпуска"], ["vEng", "По объему дивгателя"], ["price", "По цене"]
           ]
@@ -105,11 +96,11 @@ class SearchAuto extends React.Component {
     <ul className = "updateLi">
     { 
         arrayParams.map(item => {
-
+              
           return <li key={item.id}>
               <span>- </span>
-              {item.model}
-              <NavLink  to={`/all_auto/${brend}/${item.id}`}>
+              {item.model.model}
+              <NavLink  to={`/all_auto/${item.id}/${item.model.id}`}>
               перейти к просмотру 
               </NavLink>
             </li>
