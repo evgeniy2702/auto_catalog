@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import Option from "./../Form/Option";
 import Input from "./../Form/Input";
 import Models from "./../Const/Models";
+import Brends from "./../Const/Brends";
 
 
 class SearchAuto extends React.Component {
@@ -12,6 +13,7 @@ class SearchAuto extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      brend:"",
       nameParams:"",
       item:"",
       arrayParams: []
@@ -24,7 +26,7 @@ class SearchAuto extends React.Component {
   onChange(dataId, dataInput){
     this.setState({[dataId] : dataInput});
     this.state.item = dataInput;
-    console.log([dataId] + "/ " + dataInput + "/" + this.state.item);
+    
   }
 
   handleChange(e){
@@ -34,32 +36,36 @@ class SearchAuto extends React.Component {
 
   onSubmit(e){
     e.preventDefault();
-    let array = Models.map(item => item.models);
-    
-    console.dir(array)
+    let arrayModels = Brends.map(item => item.models);
+    let array = arrayModels.map(item => item.models);
     let arr = [];
     for(let i=0; i< array.length; i++) {
       for(let j=0; j< array[i].length; j++){
         
-        for( var key in array[i][j]){
-        
-          if(array[i][j][key] === this.state.item){
-            console.dir( "1 " + arr);
-            arr = arr.push(array[i][j]);
-            console.dir("2 " + arr);
-          };
-        
+        for( let s = 0; s < Object.values(array[i][j]).length ; s++){
+          
+          if(Object.values(array[i][j])[s] === this.state.item){            
+            let str = Brends.filter(item => item.id === Object.values(array[i][j])[0])[0].nameBrend;
+            console.log(str);
+            this.setState({brend: str});
+            const obj = array[i][j];
+            arr = [...arr, obj];
+            
+            break;
+          }
+               
         }
       }
     }
-    this.state.arrayParams = arr;
-    console.dir("arrayParams " + this.state.arrayParams);
+   
+    this.setState({arrayParams: arr});
+    
   }
 
   
 
   render() {
-    const { arrayParams } = this.state;
+    const { arrayParams, brend } = this.state;
     const data=[
               ["model", "По названию модели"], ["color", "По цвету"], ["year", "По году выпуска"], ["vEng", "По объему дивгателя"], ["price", "По цене"]
           ]
@@ -90,8 +96,8 @@ class SearchAuto extends React.Component {
           return <li key={item.id}>
               <span>- </span>
               {item.model}
-              <NavLink  to={`/all_auto/${brend}/${item.id}/false`}>
-              удалить модель 
+              <NavLink  to={`/all_auto/${brend}/${item.id}`}>
+              перейти к просмотру 
               </NavLink>
             </li>
            
