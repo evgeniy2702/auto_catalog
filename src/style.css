@@ -10,7 +10,7 @@ h1 {
 }
 p {
   text-align: left;
-  color: rgb(208, 208, 219);
+  color: rgb(81, 81, 100);
 }
 
 li{
@@ -18,7 +18,7 @@ li{
   margin-left: 10px;
 }
 
-a{
+a {
   text-decoration: none;
   color: rgb(218, 205, 205);
   font-size: 20px;
@@ -55,9 +55,10 @@ ol{
 }
 .model a, .updateLi a{
   text-decoration: underline blue;
+  text-align: left;
   margin-left: 25px;
   font-size: 15px;
-  color: rgb(9, 9, 70)
+  color: rgb(182, 182, 192)
 }
 .model{
 width: 100%;
