@@ -20,6 +20,7 @@ h1 {
 }
 p {
   text-align: left;
+  font-size: 20px;
   color: rgb(195, 195, 206);
 }
 
@@ -42,6 +43,7 @@ a {
 }
 .button{
   background-color: rgb(149, 149, 214);
+  margin-top: 10px;
 }
 .updateLi{
   text-align: left;
@@ -67,8 +69,8 @@ ol{
   text-decoration: underline blue;
   text-align: left;
   margin-left: 25px;
-  font-size: 15px;
-  color: rgb(145, 145, 153)
+  font-size: 25px;
+  color: rgb(255, 255, 255)
 }
 .model{
 width: 100%;
