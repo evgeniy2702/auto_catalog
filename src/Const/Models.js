@@ -22,7 +22,7 @@ let Models =[
       },
       {
         id:2,model:"Passat", color:"Черный асфальт", year: 1978, vEng:"2.0 TDI(500 л.с.)", price: 1010000, desc: "Здесь должен быть перечень всех технических характеристик",
-        bg:"url(https://lh3.googleusercontent.com/proxy/5yB7UKOKQrxIluczcVVUZhbw6UO0dhm6EEerufK_Dg8Q0BOuiq9CumueSNvLXDGIWu43lf9aOWUw1AFKGp5ISg4uexI)"
+        bg:"url(https://wroom.ru/i/cars2/volkswagen_passat_8.jpg)"
       }
     ]
   },
