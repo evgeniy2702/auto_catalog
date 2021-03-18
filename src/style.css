@@ -75,7 +75,6 @@ ol{
 .model{
 margin-top: 20px;  
 width: 100%;
-height: calc(100% - 200px);
 }
 form{
   padding: 10px;
