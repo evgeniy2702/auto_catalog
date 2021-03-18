@@ -3,6 +3,7 @@ body, html,div{
   text-align: center;
   width: 100%;
   height: 100%;
+  background-size: cover;
 }
 h1 {
   text-align: center;
