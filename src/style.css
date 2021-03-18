@@ -73,6 +73,7 @@ ol{
   color: rgb(255, 255, 255)
 }
 .model{
+margin-top: 20px;  
 width: 100%;
 height: calc(100% - 200px);
 }
