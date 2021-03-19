@@ -87,7 +87,7 @@ class SearchAuto extends React.Component {
             })
             }
             </select>
-            <Input  key={1} elem = {[this.item, "parametr", "Введите параметр : "]}  change = {this.onChange} /> 
+            <Input  key={1} elem = {[this.item, "parametr", "Введите параметр :"]}  change = {this.onChange} /> 
           </div>
           <br/>           
            <button>SEND</button>
